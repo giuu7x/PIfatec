@@ -1,0 +1,15 @@
+html{
+    background-color: #8CE8BD;
+}
+#logomed{
+    height: 250px;
+    width: 250px;
+}
+.navbar{
+    position: absolute;
+}
+#txtlogo{
+    margin-left: 1000px;
+    margin-top: 1px;
+    font-size: 34px;
+}
