@@ -1,30 +1,89 @@
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
 
-
-
-  #logomed {
-    height: 60px;
-    width: auto;
-  }
-
-  #txtlogo {
-    font-size: 24px;
-    font-weight: bold;
-  }
-
-  #barsrc {
-    width: 200px;
-  }
-  .carousel-item img {
-    height: 650px;
-    object-fit: cover;
-}
 body {
   padding-top: 100px; 
-  background-color:rgba(140, 232, 189, 1);
+  background-color: rgba(140, 232, 189, 1);
   overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+#logomed {
+  height: 60px;
+  width: auto;
+}
+
+
+#txtlogo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2b2b2b;
+}
+
+
+#barsrc {
+  width: 200px;
+  border-radius: 20px;
+  padding: 5px 15px;
+  border: 1px solid #ccc;
+}
+
+.btn-primary {
+  background-color: #00a884;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 20px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #007f66;
+}
+
+
+.navbar-nav .nav-link {
+  color: #2b2b2b;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #007f66;
+}
+
+
+.carousel-item img {
+  height: 550px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+nav-buttons .btn {
+  border-radius: 20px;
+  padding: 6px 20px;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s ease-in-out;
   
 }
 
 
+.nav-buttons .btn-primary {
+  background-color: #00a884;
+  border: none;
+}
 
+.nav-buttons .btn-primary:hover {
+  background-color: #007f66;
+  color: black;
+}
+
+
+.nav-buttons .btn-outline-primary {
+  color: #00a884;
+  border: 2px solid #00a884;
+  background-color: transparent;
+}
+
+.nav-buttons .btn-outline-primary:hover {
+  background-color: #00a884;
+  color: rgb(0, 0, 0);
+}
