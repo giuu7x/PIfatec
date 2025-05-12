@@ -1,20 +1,19 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
 
 html {
-    
-}
+    background-color: #8CE8BD;
+  }
 
-#logomed {
-    height: 100px;
+  #logomed {
+    height: 60px;
     width: auto;
-}
+  }
 
-#txtlogo {
+  #txtlogo {
     font-size: 24px;
     font-weight: bold;
-    
-}
+  }
 
-#barsrc {
+  #barsrc {
     width: 200px;
-}
+  }
