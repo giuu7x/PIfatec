@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SGHSS VidaPlus</title>
+  <link rel="stylesheet" href="estilos/vendas.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="container header-content">
+      <h1>SGHSS VidaPlus</h1>
+      <button class="menu-toggle" id="menu-btn">☰</button>
+      <nav id="menu">
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#solucoes">Soluções</a>
+        <a href="#planos">Planos</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="inicio" class="hero">
+    <div class="container">
+      <h2>Transformando a gestão da sua clínica com sofisticação e eficiência</h2>
+      <p>Uma plataforma moderna para otimizar seus processos, encantar seus pacientes e impulsionar seu crescimento.</p>
+      <a href="#sobre" class="btn">Conheça o sistema</a>
+    </div>
+  </section>
+
+  <section id="sobre" class="section container">
+    <h2>Sobre o SGHSS VidaPlus</h2>
+    <p>O <strong>SGHSS VidaPlus</strong> é uma solução completa, projetada com elegância e funcionalidade, voltada para profissionais da saúde que valorizam organização, inovação e atendimento humanizado.</p>
+    <p>Do agendamento ao prontuário eletrônico, do histórico clínico à gestão financeira — tudo em um único ambiente, intuitivo e seguro.</p>
+  </section>
+
+  <section id="solucoes" class="section alt container">
+    <h2>Soluções do Sistema</h2>
+    <ul class="solucoes-list">
+      <li>✔️ Cadastro digital e ágil de pacientes</li>
+      <li>✔️ Agendamento inteligente, presencial ou remoto</li>
+      <li>✔️ Emissão automática de atestados e documentos</li>
+      <li>✔️ Prontuário eletrônico com histórico completo</li>
+      <li>✔️ Gestão de profissionais e escalas</li>
+      <li>✔️ Acesso seguro e restrito por login</li>
+    </ul>
+  </section>
+
+  <section id="planos" class="section container">
+    <h2>Planos e Preços</h2>
+    <div class="planos-grid">
+      <div class="plano-card">
+        <h3>Plano Padrão</h3>
+        <p class="preco">R$ 199/mês</p>
+        <ul>
+          <li>Prontuário eletrônico</li>
+          <li>Gestão financeira</li>
+          <li>Agendamento online</li>
+          <li>Relatórios e suporte</li>
+        </ul>
+      </div>
+      <div class="plano-card">
+        <h3>Serviços Adicionais</h3>
+        <p class="preco">Sob consulta</p>
+        <ul>
+          <li>Robôs de atendimento automatizado</li>
+          <li>Integrações com redes sociais</li>
+          <li>Funcionalidades personalizadas</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="section container">
+    <h2>Fale Conosco</h2>
+    <form>
+      <div class="form-group">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+      </div>
+      <div class="form-group">
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="mensagem">Mensagem:</label>
+        <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="btn">Enviar</button>
+    </form>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 SGHSS VidaPlus — Sistema de Gestão para Saúde com Excelência.</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const navMenu = document.getElementById('menu');
+    menuBtn.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const destino = document.querySelector(this.getAttribute('href'));
+        if (destino) {
+          destino.scrollIntoView({ behavior: 'smooth' });
+          navMenu.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
