@@ -1,0 +1,182 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #2bbbad;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Topo: botão de home */
+.top-controls {
+  width: 100%;
+  max-width: 1220px;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.home-button {
+  color: #368D3B;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  background-color: transparent;
+  border: 1px solid #368D3B;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.home-button:hover {
+  background-color: #368D3B;
+  color: #ffffff;
+}
+
+/* Logo centralizada */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.logo {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+}
+
+/* Container do formulário */
+.container {
+  width: 100%;
+  max-width: 1220px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  padding: 40px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 10px;
+}
+
+/* Formulário */
+form {
+  width: 100%;
+}
+
+/* Rótulos */
+.label {
+  display: block;
+  color: #005004;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  margin-top: 20px;
+}
+
+/* Campos de entrada */
+.input-field {
+  width: 100%;
+  height: 60px;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #d7f8d9;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  outline: 1px solid black;
+  border: none;
+  border-radius: 5px;
+  transition: outline-color 0.3s, background-color 0.3s;
+  margin-bottom: 10px;
+}
+
+.input-field:focus {
+  outline-color: #ffffff;
+  background-color: #368D3B;
+}
+
+/* Botão de envio */
+.login-button {
+  width: 220px;
+  height: 45px;
+  background-color: #368D3B;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  outline: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 30px auto 0;
+  transition: background-color 0.3s, color 0.3s;
+  border: none;
+}
+
+.login-button span {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+  transition: color 0.3s;
+}
+
+.login-button:hover {
+  background-color: #ffffff;
+}
+
+.login-button:hover span {
+  color: #368D3B;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    padding: 30px 20px;
+  }
+
+  .label,
+  .login-button span {
+    font-size: 18px;
+  }
+
+  .input-field {
+    height: 55px;
+    font-size: 16px;
+  }
+
+  .login-button {
+    width: 180px;
+    height: 42px;
+  }
+
+  .logo {
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .label,
+  .login-button span {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .container {
+    border-radius: 0;
+    border: none;
+  }
+
+  .login-button {
+    width: 100%;
+  }
+
+  .top-controls {
+    justify-content: center;
+  }
+}

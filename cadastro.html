@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário</title>
+  <link rel="stylesheet" href="estilos/cad.css">
+</head>
+<body>
+
+  <!-- Botão de Home acima de tudo -->
+  <div class="top-controls">
+    <a href="index.html" class="home-button">← Home</a>
+  </div>
+
+ 
+
+  <!-- Container com formulário -->
+  <div class="container">
+    <!-- Alterado o action para redirecionar -->
+    <form action="login.html" method="GET">
+
+      <label for="nome" class="label">Nome</label>
+      <input
+        id="nome"
+        name="nome"
+        type="text"
+        class="input-field"
+        placeholder="Digite seu nome"
+        required
+      />
+
+      <label for="email" class="label">Email</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        class="input-field"
+        placeholder="Digite seu email"
+        required
+      />
+
+      <label for="telefone" class="label">Telefone</label>
+      <input
+        id="telefone"
+        name="telefone"
+        type="tel"
+        class="input-field"
+        placeholder="Digite seu telefone"
+        required
+      />
+
+      <label for="nascimento" class="label">Data de Nascimento</label>
+      <input
+        id="nascimento"
+        name="nascimento"
+        type="date"
+        class="input-field"
+        required
+      />
+
+      <label for="senha" class="label">Senha</label>
+      <input
+        id="senha"
+        name="senha"
+        type="password"
+        class="input-field"
+        placeholder="Digite sua senha"
+        required
+      />
+
+      <button onclick="window.location.href='hmlog.html'" type="submit" class="login-button">
+        <span>Login</span>
+      </button>
+
+    </form>
+  </div>
+</body>
+</html>

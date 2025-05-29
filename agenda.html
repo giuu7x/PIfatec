@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clínica - Agenda</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="estilos/style.css">
+</head>
+<body>
+
+  <!-- Topo -->
+  <div class="top-bar">
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir menu">
+      <span class="menu-icon"></span>
+    </button>
+    
+  </div>
+
+  <!-- Menu -->
+  <div class="nav-menu">
+    <a href="agenda.html" class="nav-link-menu">agenda</a>
+    <a href="consultas.html" class="nav-link-menu">consultas</a>
+    <a href="diagnostico.html" class="nav-link-menu">diagnostico</a>
+    <a href="medicos.html" class="nav-link-menu">médicos</a>
+  </div>
+
+  <!-- Conteúdo -->
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="right-box">
+          <div id="etapas-container">
+            <div id="especialidade-box">
+              <div id="especialidade-content">
+                <h6>Especialidade</h6>
+                <div id="especialidades" class="row">
+                  <div class="col-md-6 mb-2">
+                    <div class="card card-especialidade" onclick="selecionarEspecialidade('cardiologia', this)">
+                      <div class="card-body text-center"><strong>Cardiologia</strong></div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <div class="card card-especialidade" onclick="selecionarEspecialidade('dermatologia', this)">
+                      <div class="card-body text-center"><strong>Dermatologia</strong></div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <div class="card card-especialidade" onclick="selecionarEspecialidade('pediatria', this)">
+                      <div class="card-body text-center"><strong>Pediatria</strong></div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <div class="card card-especialidade" onclick="selecionarEspecialidade('oftalmo', this)">
+                      <div class="card-body text-center"><strong>Oftalmo</strong></div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <div class="card card-especialidade" onclick="selecionarEspecialidade('dentista', this)">
+                      <div class="card-body text-center"><strong>Dentista</strong></div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <div class="card card-especialidade" onclick="selecionarEspecialidade('ortopedia', this)">
+                      <div class="card-body text-center"><strong>Ortopedia</strong></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="medicos-step">
+              <div class="step-title">Selecione o médico</div>
+              <div id="medicos-container"><p class="text-white">Selecione uma especialidade.</p></div>
+            </div>
+            <div id="datas-step" style="display:none;">
+              <div class="step-title">Selecione a data</div>
+              <ul id="datas" style="padding-left:0;"></ul>
+            </div>
+            <div id="horarios-step" style="display:none;">
+              <div class="step-title">Selecione o horário</div>
+              <ul id="horarios" style="padding-left:0;"></ul>
+            </div>
+            <div id="confirmar-step" style="display:none;">
+              <div class="step-title">Confirmar Consulta</div>
+              <div id="confirmar-container"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="popup"><span id="popup-msg"></span><br><button id="btn-continuar" class="btn btn-success mt-2" style="display:none;" onclick="continuar()">Continuar</button></div>
+  <div id="popup-backdrop"></div>
+  <button id="btn-voltar" class="btn btn-light mt-2" style="display:none;" onclick="voltar()">Voltar</button>
+
+  <script>
+    const medicos = {
+      cardiologia: [
+        { nome: "Dr. João Coração", desc: "Especialista em Cardiologia" },
+        { nome: "Dra. Ana Pulso", desc: "Check-ups e avaliações cardíacas" },
+      ],
+      dermatologia: [
+        { nome: "Dr. João", desc: "Tratamento de pele e alergias" },
+        { nome: "Dra. Clara Derme", desc: "Cuidados dermatológicos" },
+      ],
+      pediatria: [
+        { nome: "Dra. Maria", desc: "Cuidados infantis" },
+        { nome: "Dr. Marcio", desc: "Pediatra geral" },
+      ],
+      oftalmo: [
+        { nome: "Dr. Oftalmo", desc: "Especialista em Oftalmologia" },
+      ],
+      dentista: [
+        { nome: "Dr. Dentista", desc: "Especialista em Odontologia" },
+      ],
+      ortopedia: [
+        { nome: "Dr. Ortopedia", desc: "Especialista em Ortopedia" },
+      ],
+    };
+    const datasDisponiveis = ["28/06/2025", "29/06/2025", "30/06/2025", "01/07/2025", "02/07/2025", "03/07/2025", "04/07/2025", "05/07/2025"];
+    const horariosDisponiveis = ["6 às 8 horas", "8 às 10 horas", "10 às 12 horas", "12 às 14 horas", "14 às 16 horas", "16 às 18 horas"];
+    let especialidadeSelecionada = null;
+    let medicoSelecionado = null;
+    let dataSelecionada = null;
+    let horarioSelecionado = null;
+    function selecionarEspecialidade(especialidade, el) {
+      especialidadeSelecionada = especialidade;
+      medicoSelecionado = null; dataSelecionada = null; horarioSelecionado = null;
+      document.querySelectorAll('#especialidades li').forEach(item => item.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('especialidade-box').style.display = 'none';
+      document.getElementById('medicos-step').style.display = '';
+      document.getElementById('datas-step').style.display = 'none';
+      document.getElementById('horarios-step').style.display = 'none';
+      document.getElementById('confirmar-step').style.display = 'none';
+      const container = document.getElementById("medicos-container");
+      container.innerHTML = "";
+      medicos[especialidade].forEach(med => {
+        const card = document.createElement("div");
+        card.className = "card mb-2";
+        card.innerHTML = `<div class='card-body'><strong>${med.nome}</strong><br/><small>${med.desc}</small><br/><button class='btn btn-light mt-2' onclick='selecionarMedico(\"${med.nome}\")'>Selecionar</button></div>`;
+        container.appendChild(card);
+      });
+      document.getElementById('btn-voltar').style.display = 'none';
+      document.getElementById('btn-continuar').style.display = 'none';
+    }
+    function selecionarMedico(nome) {
+      medicoSelecionado = nome;
+      dataSelecionada = null; horarioSelecionado = null;
+      document.getElementById('medicos-step').style.display = 'none';
+      document.getElementById('datas-step').style.display = '';
+      document.getElementById('horarios-step').style.display = 'none';
+      document.getElementById('confirmar-step').style.display = 'none';
+      const datasUl = document.getElementById('datas');
+      datasUl.innerHTML = '';
+      datasDisponiveis.forEach(data => {
+        const li = document.createElement('li');
+        li.textContent = data;
+        li.onclick = () => selecionarData(data, li);
+        datasUl.appendChild(li);
+      });
+      document.getElementById('btn-voltar').style.display = 'inline-block';
+      document.getElementById('btn-continuar').style.display = 'none';
+    }
+    function selecionarData(data, el) {
+      dataSelecionada = data;
+      horarioSelecionado = null;
+      document.querySelectorAll('#datas li').forEach(item => item.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('datas-step').style.display = 'none';
+      document.getElementById('horarios-step').style.display = '';
+      document.getElementById('confirmar-step').style.display = 'none';
+      const horariosUl = document.getElementById('horarios');
+      horariosUl.innerHTML = '';
+      horariosDisponiveis.forEach(hora => {
+        const li = document.createElement('li');
+        li.textContent = hora;
+        li.onclick = () => selecionarHorario(hora, li);
+        horariosUl.appendChild(li);
+      });
+      document.getElementById('btn-voltar').style.display = 'inline-block';
+      document.getElementById('btn-continuar').style.display = 'none';
+    }
+    function selecionarHorario(hora, el) {
+      horarioSelecionado = hora;
+      document.querySelectorAll('#horarios li').forEach(item => item.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('horarios-step').style.display = 'none';
+      document.getElementById('confirmar-step').style.display = '';
+      const confirmarDiv = document.getElementById('confirmar-container');
+      confirmarDiv.innerHTML = `<div class='mb-2'><b>Especialidade:</b> ${especialidadeSelecionada}<br><b>Médico:</b> ${medicoSelecionado}<br><b>Data:</b> ${dataSelecionada}<br><b>Horário:</b> ${horarioSelecionado}</div><button class='btn btn-light' onclick='confirmarConsulta()'>Agendar Consulta</button>`;
+      document.getElementById('btn-voltar').style.display = 'inline-block';
+      document.getElementById('btn-continuar').style.display = 'none';
+    }
+    function voltar() {
+      if (horarioSelecionado) {
+        horarioSelecionado = null;
+        document.getElementById('horarios-step').style.display = '';
+        document.getElementById('confirmar-step').style.display = 'none';
+      } else if (dataSelecionada) {
+        dataSelecionada = null;
+        document.getElementById('datas-step').style.display = '';
+        document.getElementById('horarios-step').style.display = 'none';
+      } else if (medicoSelecionado) {
+        medicoSelecionado = null;
+        document.getElementById('medicos-step').style.display = '';
+        document.getElementById('datas-step').style.display = 'none';
+      }
+    }
+    function confirmarConsulta() {
+      // Salva os dados no localStorage
+      localStorage.setItem('consultaConfirmada', JSON.stringify({
+        especialidade: especialidadeSelecionada,
+        medico: medicoSelecionado,
+        data: dataSelecionada,
+        horario: horarioSelecionado
+      }));
+      document.getElementById('popup-msg').innerHTML = `Consulta agendada com sucesso!<br><b>Especialidade:</b> ${especialidadeSelecionada}<br><b>Médico:</b> ${medicoSelecionado}<br><b>Data:</b> ${dataSelecionada}<br><b>Horário:</b> ${horarioSelecionado}`;
+      document.getElementById('btn-continuar').style.display = 'inline-block';
+      document.getElementById('popup').style.display = 'block';
+      document.getElementById('popup-backdrop').style.display = 'block';
+    }
+    function fecharPopup() {
+      document.getElementById('popup').style.display = 'none';
+      document.getElementById('popup-backdrop').style.display = 'none';
+      document.getElementById('btn-continuar').style.display = 'none';
+      // Resetar tudo após agendamento
+      document.querySelectorAll('#especialidades li').forEach(item => item.classList.remove('active'));
+      document.getElementById('medicos-container').innerHTML = '<p class="text-white">Selecione uma especialidade.</p>';
+      document.getElementById('datas-step').style.display = 'none';
+      document.getElementById('horarios-step').style.display = 'none';
+      document.getElementById('confirmar-step').style.display = 'none';
+      especialidadeSelecionada = null; medicoSelecionado = null; dataSelecionada = null; horarioSelecionado = null;
+    }
+    function continuar() {
+      if (medicoSelecionado && !dataSelecionada) {
+        document.getElementById('medicos-step').style.display = 'none';
+        document.getElementById('datas-step').style.display = '';
+      } else if (dataSelecionada && !horarioSelecionado) {
+        document.getElementById('datas-step').style.display = 'none';
+        document.getElementById('horarios-step').style.display = '';
+      } else if (horarioSelecionado) {
+        window.location.href = 'consultas.html';
+      }
+    }
+    function toggleMenu() {
+      const navMenu = document.querySelector('.nav-menu');
+      navMenu.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
