@@ -11,17 +11,19 @@
 
   <!-- Topo -->
   <div class="top-bar">
-    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir menu"><span class="menu-icon"></span></button>
-    
-  </div>
-
-<!-- Menu -->
-<div class="nav-menu">
-    <a href="index.html" class="nav-link-menu">Inicio</a>
-    <a href="agenda.html" class="nav-link-menu">agenda</a>
-    <a href="consultas.html" class="nav-link-menu">consultas</a>
-    <a href="diagnostico.html" class="nav-link-menu">diagnostico</a>
-    <a href="medicos.html" class="nav-link-menu">médicos</a>
+    <button class="menu-toggle" aria-label="Abrir menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="logo">
+      <img src="imagens/1000039027-removebg-preview.png" alt="Logo Clínica">
+    </div>
+    <div class="nav-menu">
+      <a href="index.html" class="nav-link-menu">Inicio</a>
+      <a href="agenda.html" class="nav-link-menu">Agendamento</a>
+      <a href="consultas.html" class="nav-link-menu">Consultas</a>
+      <a href="diagnostico.html" class="nav-link-menu">Diagnósticos</a>
+      <a href="medicos.html" class="nav-link-menu">Médicos</a>
+    </div>
   </div>
 
   <!-- Conteúdo -->
@@ -73,10 +75,15 @@
   </div>
 
 <script>
-function toggleMenu() {
-  const navMenu = document.querySelector('.nav-menu');
-  navMenu.classList.toggle('active');
-}
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuBtn = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    if (menuBtn && navMenu) {
+      menuBtn.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+      });
+    }
+  });
 
 // Fecha o menu mobile ao clicar em um link
 document.addEventListener('DOMContentLoaded', function() {
@@ -89,14 +96,14 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
-<footer class="bg-dark text-white py-4 fixed-bottom">
-        <div class="container text-center">
-          <p class="mb-1">&copy; 2025 Clínica Saúde e Cidadania - Todos os direitos reservados</p>
-          <p class="small">
-            Endereço: R. Bernardino de Campos, 933 - Centro, Indaiatuba - SP<br>
-            Telefone: (19) 99348-4567 | Email: clinica@gmail.com
-          </p>
-        </div>
-      </footer>
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Clínica Saúde e Cidadania - Todos os direitos reservados</p>
+    <p class="small">
+      Endereço: R. Bernardino de Campos, 933 - Centro, Indaiatuba - SP<br>
+      Telefone: (19) 99348-4567 | Email: clinica@gmail.com
+    </p>
+  </div>
+</footer>
 </body>
 </html>
