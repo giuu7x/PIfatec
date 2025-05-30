@@ -78,7 +78,7 @@ body { background-color: #ffffff; font-family: sans-serif; }
   border-radius: 5px;
   cursor: pointer;
   font-weight: 500;
-  border: 2px solid #2e9e2f;
+  border: 2px solid #1d8f8a;
   transition: background 0.2s, color 0.2s;
 }
 .left-box li.active, .left-box li:hover { background-color: #1d8f8a; color: white; }
