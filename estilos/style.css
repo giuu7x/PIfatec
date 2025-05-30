@@ -118,14 +118,16 @@ body { background-color: #ffffff; font-family: sans-serif; }
   color: #fff !important;
 }
 .btn-light {
+  background-color: #ffffff;
   color: #1d8f8a;
-  background: #fff;
   border: 2px solid #1d8f8a;
   font-weight: 600;
+  transition: background-color 0.2s, color 0.2s;
 }
+
 .btn-light:hover {
-  background: #1d8f8a;
-  color: #fff;
+  background-color: #1d8f8a;
+  color: #ffffff;
 }
 .card-especialidade {
   background: #1d8f8a;
