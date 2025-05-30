@@ -84,7 +84,7 @@ body { background-color: #ffffff; font-family: sans-serif; }
 .left-box li.active, .left-box li:hover { background-color: #1d8f8a; color: white; }
 .right-box .card { background-color: #1d8f8a; color: white; border: none; margin-bottom: 10px; }
 .right-box .card-body { padding: 10px; }
-.step-title { margin-top: 20px; margin-bottom: 10px; color: #2e9e2f; font-weight: bold; }
+.step-title { margin-top: 20px; margin-bottom: 10px; color: #1d8f8a; font-weight: bold; }
 .right-box .step-title { color: white; }
 #datas li, #horarios li {
   background: white;
