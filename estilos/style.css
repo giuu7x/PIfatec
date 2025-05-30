@@ -130,16 +130,18 @@ body { background-color: #ffffff; font-family: sans-serif; }
   color: #ffffff;
 }
 .card-especialidade {
-  background: #ffffff;
-  color: white;
-  border: none;
+  background-color: #ffffff; /* fundo branco */
+  color: #1d8f8a; /* texto na cor principal */
+  border: 2px solid #1d8f8a;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  transition: background-color 0.2s, color 0.2s;
 }
-.card-especialidade:hover, .card-especialidade.active {
-  background: #1d8f8a;
-  color: #fff;
-  box-shadow: 0 2px 8px #0002;
+
+.card-especialidade:hover,
+.card-especialidade.active {
+  background-color: #1d8f8a; /* cor do fundo da .right-box */
+  color: #ffffff; /* texto branco */
 }
 .card {
   background-color: #ffffff;
